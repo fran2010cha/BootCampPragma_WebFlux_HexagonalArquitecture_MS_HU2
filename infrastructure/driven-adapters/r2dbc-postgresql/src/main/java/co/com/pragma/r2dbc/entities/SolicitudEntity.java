@@ -24,10 +24,10 @@ public class SolicitudEntity {
     private BigDecimal monto;
 
     @Column("plazo")
-    private Integer plazo; // <- requerido por tu DDL original
+    private Integer plazo;
 
     @Column("email")
-    private String email;  // <- si tu DDL lo tiene NOT NULL
+    private String email;
 
     @Column("id_estado")
     private Long estadoId; // FK

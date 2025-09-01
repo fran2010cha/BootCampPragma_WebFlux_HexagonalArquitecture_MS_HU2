@@ -18,16 +18,10 @@ public class RegistrarSolicitudUseCase implements IRegistrarSolicitud {
     public Mono<Solicitud> registerLoanRequest(Solicitud solicitud) {
 
         return tipoPrestamoReactRepository.findByName(solicitud.getTipoPrestamo().getNombre())
-                .doOnNext(saved -> System.out.println("Registro solicitud request: " + saved))
+                .doOnNext(saved -> System.out.println("Registro tipo prestacion: " + saved))
                 .flatMap(tipoPrestamo -> {
                     solicitud.setTipoPrestamo(tipoPrestamo);
                     return solicitudRepository.saveSolicitud(solicitud);
-                  /*  return estadosRepository.getEstadoById(solicitud.getEstado().getIdEstado())
-                            .doOnNext(saved -> System.out.println("Estado encontrado: " + saved))
-                            .flatMap(estados -> {
-                               // solicitud.setEstado(estados);
-                                return solicitudRepository.saveSolicitud(solicitud);
-                            });*/
                 }).doOnNext(saved -> System.out.println("Registrando solicitud de prestamo: " + saved));
     }
 }
