@@ -1,14 +1,20 @@
 package co.com.pragma.model.solicitud;
-import lombok.Builder;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-//import lombok.NoArgsConstructor;
-import lombok.Setter;
+import co.com.pragma.model.estados.Estados;
+import co.com.pragma.model.tipoprestamo.TipoPrestamo;
+import lombok.*;
 
 @Getter
 @Setter
-//@NoArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Builder(toBuilder = true)
 public class Solicitud {
+    private Long idSolicitud;
+    private String usuario_id;           // lo llenaremos con documentoIdentidad
+    private TipoPrestamo tipoPrestamo;   // debe traer idTipoPrestamo poblado antes de guardar
+    private Estados estado;              // debe traer idEstado poblado antes de guardar
+    private Double monto;
+    private Integer plazoMeses;
+    private String email;
 }
